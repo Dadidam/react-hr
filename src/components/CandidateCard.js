@@ -17,6 +17,11 @@ const CandidateCard = () => {
     fetchRandomProfile();
   };
 
+  const handleReject = () => {
+    // pushToLog(profile);
+    fetchRandomProfile();
+  };
+
   const renderCard = () => {
     if (!profile) {
       return (
@@ -56,7 +61,7 @@ const CandidateCard = () => {
   return (
     <Row xs={1} md={3} className="content-container">
       <Col md={4} className="btn-container-grid">
-        <Button variant="danger" size="lg">
+        <Button variant="danger" size="lg" onClick={handleReject}>
           <Icon code="thumbs-down" />
           REJECT
         </Button>
