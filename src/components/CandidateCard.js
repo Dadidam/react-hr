@@ -31,13 +31,10 @@ const CandidateCard = () => {
 
     return (
       <Card>
-        <Card.Img
-          variant="top"
-          src="https://randomuser.me/api/portraits/women/31.jpg"
-        />
+        <Card.Img variant="top" src={profile.avatarURL} />
         <Card.Body>
-          <Card.Title>Mathilde Pedersen</Card.Title>
-          <Card.Text>mathilde.pedersen@example.com</Card.Text>
+          <Card.Title>{profile.fullName}</Card.Title>
+          <Card.Text>{profile.email}</Card.Text>
         </Card.Body>
       </Card>
     );
