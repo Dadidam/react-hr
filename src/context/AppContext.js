@@ -20,7 +20,8 @@ const AppContextProvider = ({ children }) => {
             avatarURL: picture.large,
             dob: formatDate(dob.date),
             email,
-            fullName: `${name.first} ${name.last}`
+            fullName: `${name.first} ${name.last}`,
+            thumbnailURL: picture.thumbnail
           };
 
           setProfile(profileData);
@@ -29,6 +30,8 @@ const AppContextProvider = ({ children }) => {
       alert("Error");
     }
   };
+
+  const pushToLog = profile => setLog([...log, profile]);
 
   useEffect(() => {
     fetchRandomProfile();
@@ -41,6 +44,7 @@ const AppContextProvider = ({ children }) => {
         setProfile,
         log,
         setLog,
+        pushToLog,
         fetchRandomProfile
       }}
     >

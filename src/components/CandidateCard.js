@@ -9,7 +9,13 @@ import Icon from "./common/Icon";
 import { AppContext } from "../context/AppContext";
 
 const CandidateCard = () => {
-  const { profile } = useContext(AppContext);
+  const { profile, pushToLog, fetchRandomProfile, log } =
+    useContext(AppContext);
+
+  const handleAccept = () => {
+    pushToLog(profile);
+    fetchRandomProfile();
+  };
 
   const renderCard = () => {
     if (!profile) {
@@ -35,14 +41,12 @@ const CandidateCard = () => {
         <Card.Body>
           <Card.Title>{profile.fullName}</Card.Title>
           <Card.Text>
-            <p>
-              <Icon code="cake-candles" />
-              {profile.dob}
-            </p>
-            <p>
-              <Icon code="envelope" />
-              <a href={`mailto:${profile.email}`}>{profile.email}</a>
-            </p>
+            <Icon code="cake-candles" />
+            {profile.dob}
+          </Card.Text>
+          <Card.Text>
+            <Icon code="envelope" />
+            <a href={`mailto:${profile.email}`}>{profile.email}</a>
           </Card.Text>
         </Card.Body>
       </Card>
@@ -59,7 +63,7 @@ const CandidateCard = () => {
       </Col>
       <Col md={4}>{renderCard()}</Col>
       <Col md={4} className="btn-container-grid">
-        <Button variant="success" size="lg">
+        <Button variant="success" size="lg" onClick={handleAccept}>
           <Icon code="thumbs-up" />
           ACCEPT
         </Button>
