@@ -15,13 +15,13 @@ const AppContextProvider = ({ children }) => {
       await fetch("https://randomuser.me/api/")
         .then(response => response.json())
         .then(data => {
-          const { email, dob, name, picture, phone, id } = data.results[0];
+          const { email, dob, name, picture, phone, login } = data.results[0];
           const profileData = {
             avatarURL: picture.large,
             dob: formatDate(dob.date),
             email,
             fullName: `${name.first} ${name.last}`,
-            id: id.value,
+            id: login.uuid,
             phone,
             thumbnailURL: picture.thumbnail
           };
@@ -35,6 +35,12 @@ const AppContextProvider = ({ children }) => {
 
   const pushToLog = profile => setLog([...log, profile]);
 
+  const removeFromLog = id => {
+    const filtered = log.filter(profile => profile.id !== id);
+
+    setLog([...filtered]);
+  };
+
   useEffect(() => {
     fetchRandomProfile();
   }, []);
@@ -47,6 +53,7 @@ const AppContextProvider = ({ children }) => {
         log,
         setLog,
         pushToLog,
+        removeFromLog,
         fetchRandomProfile
       }}
     >

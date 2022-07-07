@@ -13,12 +13,12 @@ const CandidateCard = () => {
     useContext(AppContext);
 
   const handleAccept = () => {
-    pushToLog(profile);
+    pushToLog({ ...profile, accepted: true });
     fetchRandomProfile();
   };
 
   const handleReject = () => {
-    // pushToLog(profile);
+    pushToLog({ ...profile });
     fetchRandomProfile();
   };
 

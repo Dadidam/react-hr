@@ -1,7 +1,7 @@
 // npm packages
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import { Alert, Table } from "react-bootstrap";
+import { Alert, Badge, Button, Table } from "react-bootstrap";
 
 // app components
 import Icon from "./common/Icon";
@@ -10,9 +10,7 @@ import Icon from "./common/Icon";
 import { AppContext } from "../context/AppContext";
 
 const LogGrid = () => {
-  const { log } = useContext(AppContext);
-
-  console.log(log);
+  const { log, removeFromLog } = useContext(AppContext);
 
   if (!log || !log.length) {
     return (
@@ -22,6 +20,14 @@ const LogGrid = () => {
       </Alert>
     );
   }
+
+  const renderStatusBadge = isAccepted => {
+    if (isAccepted) {
+      return <Badge bg="success">Accepted</Badge>;
+    }
+
+    return <Badge bg="danger">Rejected</Badge>;
+  };
 
   return (
     <Table striped bordered hover variant="dark">
@@ -57,8 +63,15 @@ const LogGrid = () => {
                   <a href={`mailto:${profile.email}`}>{profile.email}></a>
                 </p>
               </td>
-              <td>{profile.status}</td>
-              <td>Remove</td>
+              <td>{renderStatusBadge(profile.accepted)}</td>
+              <td>
+                <Button
+                  variant="link"
+                  onClick={() => removeFromLog(profile.id)}
+                >
+                  Remove from list
+                </Button>
+              </td>
             </tr>
           );
         })}
