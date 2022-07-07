@@ -2,15 +2,15 @@
 import React from "react";
 
 // app components
-import CandidateCard from "./CandidateCard";
+import LogGrid from "./LogGrid";
 import ContentContainer from "./common/ContentContainer";
 
-const Dashboard = () => {
+const Log = () => {
   return (
     <ContentContainer>
-      <CandidateCard />
+      <LogGrid />
     </ContentContainer>
   );
 };
 
-export default Dashboard;
+export default Log;

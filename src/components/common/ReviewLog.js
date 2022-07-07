@@ -1,9 +1,10 @@
 // npm packages
 import React, { useContext } from "react";
+import { Link } from "react-router-dom";
 import { Badge, Button } from "react-bootstrap";
 
 // context providers
-import { AppContext } from "../context/AppContext";
+import { AppContext } from "../../context/AppContext";
 
 const ReviewLog = () => {
   const { log } = useContext(AppContext);
@@ -17,10 +18,10 @@ const ReviewLog = () => {
   };
 
   return (
-    <>
-      <Button variant="link">Review Log</Button>&nbsp;
+    <Link to="/log">
+      <Button variant="link">Review Log</Button>
       {renderBagde()}
-    </>
+    </Link>
   );
 };
 

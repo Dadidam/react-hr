@@ -15,12 +15,14 @@ const AppContextProvider = ({ children }) => {
       await fetch("https://randomuser.me/api/")
         .then(response => response.json())
         .then(data => {
-          const { email, dob, name, picture } = data.results[0];
+          const { email, dob, name, picture, phone, id } = data.results[0];
           const profileData = {
             avatarURL: picture.large,
             dob: formatDate(dob.date),
             email,
             fullName: `${name.first} ${name.last}`,
+            id: id.value,
+            phone,
             thumbnailURL: picture.thumbnail
           };
 

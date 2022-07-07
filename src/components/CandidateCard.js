@@ -59,7 +59,7 @@ const CandidateCard = () => {
   };
 
   return (
-    <Row xs={1} md={3} className="content-container">
+    <Row xs={1} md={3}>
       <Col md={4} className="btn-container-grid">
         <Button variant="danger" size="lg" onClick={handleReject}>
           <Icon code="thumbs-down" />
