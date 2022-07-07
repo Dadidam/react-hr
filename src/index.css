@@ -30,7 +30,8 @@ body {
   font-family: "Chango", cursive;
 }
 
-.btn i {
+.btn i,
+p i {
   padding-right: 0.5em;
 }
 

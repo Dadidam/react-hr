@@ -34,7 +34,16 @@ const CandidateCard = () => {
         <Card.Img variant="top" src={profile.avatarURL} />
         <Card.Body>
           <Card.Title>{profile.fullName}</Card.Title>
-          <Card.Text>{profile.email}</Card.Text>
+          <Card.Text>
+            <p>
+              <Icon code="cake-candles" />
+              {profile.dob}
+            </p>
+            <p>
+              <Icon code="envelope" />
+              <a href={`mailto:${profile.email}`}>{profile.email}</a>
+            </p>
+          </Card.Text>
         </Card.Body>
       </Card>
     );
