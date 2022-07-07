@@ -1,11 +1,48 @@
 // npm packages
-import React from "react";
-import { Button, Card, Col, Row } from "react-bootstrap";
+import React, { useContext } from "react";
+import { Button, Card, Col, Placeholder, Row } from "react-bootstrap";
 
 // app components
 import Icon from "./common/Icon";
 
+// context providers
+import { AppContext } from "../context/AppContext";
+
 const CandidateCard = () => {
+  const { profile } = useContext(AppContext);
+
+  const renderCard = () => {
+    if (!profile) {
+      return (
+        <Card>
+          <Card.Body>
+            <Placeholder as={Card.Title} animation="glow">
+              <Placeholder xs={6} />
+            </Placeholder>
+            <Placeholder as={Card.Text} animation="glow">
+              <Placeholder xs={7} /> <Placeholder xs={4} />{" "}
+              <Placeholder xs={4} /> <Placeholder xs={6} />{" "}
+              <Placeholder xs={8} />
+            </Placeholder>
+          </Card.Body>
+        </Card>
+      );
+    }
+
+    return (
+      <Card>
+        <Card.Img
+          variant="top"
+          src="https://randomuser.me/api/portraits/women/31.jpg"
+        />
+        <Card.Body>
+          <Card.Title>Mathilde Pedersen</Card.Title>
+          <Card.Text>mathilde.pedersen@example.com</Card.Text>
+        </Card.Body>
+      </Card>
+    );
+  };
+
   return (
     <Row xs={1} md={3} className="content-container">
       <Col md={4} className="btn-container-grid">
@@ -14,18 +51,7 @@ const CandidateCard = () => {
           REJECT
         </Button>
       </Col>
-      <Col md={4}>
-        <Card>
-          <Card.Img
-            variant="top"
-            src="https://randomuser.me/api/portraits/women/31.jpg"
-          />
-          <Card.Body>
-            <Card.Title>Mathilde Pedersen</Card.Title>
-            <Card.Text>mathilde.pedersen@example.com</Card.Text>
-          </Card.Body>
-        </Card>
-      </Col>
+      <Col md={4}>{renderCard()}</Col>
       <Col md={4} className="btn-container-grid">
         <Button variant="success" size="lg">
           <Icon code="thumbs-up" />

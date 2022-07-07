@@ -5,14 +5,19 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./components/Home";
 import Dashboard from "./components/Dashboard";
 
+// context providers
+import AppContextProvider from "./context/AppContext";
+
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/" element={<Home />} />
-      </Routes>
-    </Router>
+    <AppContextProvider>
+      <Router>
+        <Routes>
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/" element={<Home />} />
+        </Routes>
+      </Router>
+    </AppContextProvider>
   );
 }
 
