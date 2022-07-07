@@ -9,8 +9,7 @@ import Icon from "./common/Icon";
 import { AppContext } from "../context/AppContext";
 
 const CandidateCard = () => {
-  const { profile, pushToLog, fetchRandomProfile, log } =
-    useContext(AppContext);
+  const { profile, pushToLog, fetchRandomProfile } = useContext(AppContext);
 
   const handleAccept = () => {
     pushToLog({ ...profile, accepted: true });
