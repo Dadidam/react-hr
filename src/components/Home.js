@@ -4,7 +4,7 @@ import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 // CSS, styling rules
-import "../App.css";
+import "../Landing.css";
 
 const Home = () => {
   return (

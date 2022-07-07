@@ -1,3 +1,6 @@
+/* ================ */
+/* Main HTML blocks */
+/* ================ */
 html,
 body {
   background-color: #0d1122;
@@ -12,11 +15,34 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
-}
-
+/* ================ */
+/* Custom CSS rules */
+/* ================ */
 .dark {
   background-color: #0d1122;
+}
+
+.content-container {
+  padding-top: 1em;
+}
+
+.btn {
+  font-family: "Chango", cursive;
+}
+
+.btn i {
+  padding-right: 0.5em;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.dashboard-logo {
+  height: 35px;
+  width: 35px;
 }
