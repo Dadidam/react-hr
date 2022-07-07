@@ -46,3 +46,8 @@ body {
   height: 35px;
   width: 35px;
 }
+
+.btn-container-grid {
+  display: grid;
+  align-content: center;
+}

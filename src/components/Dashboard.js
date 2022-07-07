@@ -3,6 +3,7 @@ import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 
 // app components
+import CandidateCard from "./CandidateCard";
 import Logout from "./common/Logout";
 import NavLogo from "./common/NavLogo";
 import ReviewLog from "./ReviewLog";
@@ -23,7 +24,9 @@ const Dashboard = () => {
           </Col>
         </Row>
         <Row>
-          <Col>Candidate Profile Review</Col>
+          <Col className="text-center">
+            <CandidateCard />
+          </Col>
         </Row>
       </Container>
     </div>
