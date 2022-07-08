@@ -15,11 +15,11 @@ test("displays profile photo fetched from the server", async () => {
   const avatar = await screen.findByRole("img", { class: "card-img-top" });
   expect(avatar).toBeInTheDocument();
 
-  // check if ACCEPT button exists
-  const acceptBtn = screen.getByRole("button", {
-    name: "ACCEPT"
+  // check if APPROVE button exists
+  const approveBtn = screen.getByRole("button", {
+    name: "APPROVE"
   });
-  expect(acceptBtn).toBeInTheDocument();
+  expect(approveBtn).toBeInTheDocument();
 
   // check if REJECT button exists
   const rejectBtn = screen.getByRole("button", {
@@ -27,10 +27,19 @@ test("displays profile photo fetched from the server", async () => {
   });
   expect(rejectBtn).toBeInTheDocument();
 
-  // check if counter increased after ACCEPT button click
-  fireEvent.click(acceptBtn);
-  fireEvent.click(acceptBtn);
-  fireEvent.click(acceptBtn);
-  const counter = screen.getByText("3");
+  // check if counter increased after APPROVE button clicked
+  fireEvent.click(approveBtn);
+
+  const counter = screen.getByText("1");
   expect(counter).toBeInTheDocument();
+
+  // now click 2 more times...
+  fireEvent.click(approveBtn);
+  fireEvent.click(approveBtn);
+  // ... and 1 more on the REJECT button as well
+  fireEvent.click(rejectBtn);
+
+  // now the counter should be equal the number of total clicks we made
+  const lastCounter = screen.getByText("4");
+  expect(lastCounter).toBeInTheDocument();
 });

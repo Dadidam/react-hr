@@ -21,9 +21,9 @@ const LogGrid = () => {
     );
   }
 
-  const renderStatusBadge = isAccepted => {
-    if (isAccepted) {
-      return <Badge bg="success">Accepted</Badge>;
+  const renderStatusBadge = isApproved => {
+    if (isApproved) {
+      return <Badge bg="success">Approved</Badge>;
     }
 
     return <Badge bg="danger">Rejected</Badge>;
@@ -63,7 +63,7 @@ const LogGrid = () => {
                   <a href={`mailto:${profile.email}`}>{profile.email}></a>
                 </p>
               </td>
-              <td>{renderStatusBadge(profile.accepted)}</td>
+              <td>{renderStatusBadge(profile.approved)}</td>
               <td>
                 <Button
                   variant="link"

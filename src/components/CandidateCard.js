@@ -11,8 +11,8 @@ import { AppContext } from "../context/AppContext";
 const CandidateCard = () => {
   const { profile, pushToLog, fetchRandomProfile } = useContext(AppContext);
 
-  const handleAccept = () => {
-    pushToLog({ ...profile, accepted: true });
+  const handleApprove = () => {
+    pushToLog({ ...profile, approved: true });
     fetchRandomProfile();
   };
 
@@ -67,9 +67,9 @@ const CandidateCard = () => {
       </Col>
       <Col md={4}>{renderCard()}</Col>
       <Col md={4} className="btn-container-grid">
-        <Button variant="success" size="lg" onClick={handleAccept}>
+        <Button variant="success" size="lg" onClick={handleApprove}>
           <Icon code="thumbs-up" />
-          ACCEPT
+          APPROVE
         </Button>
       </Col>
     </Row>
